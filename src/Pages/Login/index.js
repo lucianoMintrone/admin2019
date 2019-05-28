@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
-import '../utils.css';
+import '../../utils.css';
 import './styles.css';
 
 const Login = () => (
@@ -43,9 +44,9 @@ const Login = () => (
 			
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<Link to="/home" class="login100-form-btn no-style-link link-white-text">
 							Login
-						</button>
+						</Link>
 					</div>
 					
 					<div class="text-center p-t-46 p-b-20">
@@ -65,7 +66,7 @@ const Login = () => (
 					</div>
 				</form>
 
-				<div class="login100-more" style={{ backgroundImage: "url('../assets/images/bg-01.jpg')" }}>
+				<div class="login100-more" style={{ backgroundImage: "url('../../assets/images/bg-01.jpg')" }}>
 				</div>
 			</div>
 		</div>
