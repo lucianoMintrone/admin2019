@@ -61,7 +61,7 @@ const Login = () => {
 							</span>
 						</div>
 					</form>
-					<div class="login100-more" style={{ backgroundImage: "url('../../assets/images/bg-01.jpg')" }}>
+					<div class="login100-more">
 					</div>
 				</div>
 			</div>
