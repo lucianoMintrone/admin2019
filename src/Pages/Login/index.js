@@ -6,7 +6,7 @@ import Button from '../../Components/Button';
 import '../../utils.css';
 import './styles.css';
 
-const validateLoginForm = (email, password, setError) => {
+const validateLoginForm = (email, password, setError, history) => {
 	if (!RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/).test(email)) {
 		if (password.length < 6) {
 			setError('Email inválido. Contraseña demasiado corta (min 6).');
@@ -22,9 +22,10 @@ const validateLoginForm = (email, password, setError) => {
 		}
 	}
 	setError('');
+	history.push('/home');
 }
 
-const Login = () => {
+const Login = ({ history }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
@@ -33,7 +34,7 @@ const Login = () => {
 		<div class="limiter">
 			<div class="container-login100">
 				<div class="wrap-login100">
-					<form class="login100-form validate-form">
+					<form class="login100-form validate-form" onSubmit={e => { e.preventDefault(); validateLoginForm(email, password, setError, history); }}>
 						<span class="login100-form-title p-b-43">
 							Inicie Sesión para continuar
 						</span>
@@ -52,7 +53,7 @@ const Login = () => {
 						/>
 						<Button
 							title="Iniciar Sesión"
-							onClick={() => validateLoginForm(email, password, setError)}
+							onClick={() => validateLoginForm(email, password, setError, history)}
 						/>
 
 						<div class="text-center p-t-46 p-b-20">
