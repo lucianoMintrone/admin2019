@@ -3,39 +3,37 @@ import { Link } from 'react-router-dom';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
+import Checkbox from '../../Components/Checkbox';
 
 import '../../utils.css';
 import './styles.css';
 
-const validateLoginForm = (email, password, setError, history) => {
-	if (!RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/).test(email)) {
-		if (password.length < 6) {
-			setError('Email inválido. Contraseña demasiado corta (min 6).');
-			return;
-		} else {
-			setError('Email inválido.');
-			return;
-		}
-	} else {
-		if (password.length < 6) {
-			setError('Contraseña demasiado corta (min 6).');
-			return;
-		}
+const validateLoginForm = (email, password, type, setError, history) => {
+	let errorMessage = '';
+	if (!RegExp(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/).test(email)) {
+		errorMessage = 'Email inválido.';
+	} 
+	if (password.length < 6) {
+		errorMessage += ' Contraseña demasiado corta (min 6).';
 	}
-	setError('');
-	history.push('/home');
+	if (type === '') {
+		errorMessage += ' Selecciona el tipo de cuenta.';
+	}
+	setError(errorMessage);
+	if (errorMessage === '') history.push('/home');
 }
 
 const Login = ({ history }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [type, setType] = useState('');
 	const [error, setError] = useState('');
 
 	return (
 		<div class="limiter">
 			<div class="container-login100">
 				<div class="wrap-login100">
-					<form class="login100-form validate-form" onSubmit={e => { e.preventDefault(); validateLoginForm(email, password, setError, history); }}>
+					<form class="login100-form validate-form" onSubmit={e => { e.preventDefault(); validateLoginForm(email, password, type, setError, history); }}>
 						<span class="login100-form-title p-b-43">
 							Inicie Sesión para continuar
 						</span>
@@ -54,8 +52,13 @@ const Login = ({ history }) => {
 						/>
 						<Button
 							title="Iniciar Sesión"
-							onClick={() => validateLoginForm(email, password, setError, history)}
+							onClick={() => validateLoginForm(email, password, type, setError, history)}
 						/>
+
+						<div class="flex-sa m-t-20">
+							<Checkbox checked={type === 'admin'} id="admin" label="Administrador" onChange={() => setType('admin')} />
+							<Checkbox checked={type === 'client'} id="client" label="Cliente" onChange={() => setType('client')} />
+						</div>
 
 						<div class="text-center p-t-46 p-b-20">
 							<span style={{ color: '#FF9494' }} class="txt2">
