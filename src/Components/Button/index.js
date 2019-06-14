@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { string, func } from 'prop-types';
 
+import './styles.css';
+
 const Button = ({ title, type, onClick, to }) => (
     <div class="container-login100-form-btn">
         {

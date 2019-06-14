@@ -1,6 +1,8 @@
 import React from 'react';
 import { string, func } from 'prop-types';
 
+import './styles.css';
+
 const Input = ({ placeholder, name, value, type, onChange }) => (
     <div class="wrap-input100 validate-input">
         <input type={type} onChange={onChange} value={value} class="input100" name={name} />
@@ -20,7 +22,7 @@ Input.propTypes = {
 Input.defaultProps = {
     placeholder: '',
     name: '',
-    value: '',
+    value: undefined,
     type: 'text',
     onChange: () => {}
 };

@@ -304,37 +304,3 @@
 	}
  }
  
-
- /*=======================================================*/
- .no-style-link:link {
-	text-decoration: none;
- }
- 
- .no-style-link:visited {
-	text-decoration: none;
- }
- 
- .no-style-link:hover {
-	text-decoration: none;
- }
- 
- .no-style-link:active {
-	text-decoration: none;
- }
-
- .link-white-text:link {
-	color: #fff;
- }
- 
- .link-white-text:visited {
-	color: #fff;
- }
- 
- .link-white-text:hover {
-	color: #fff;
- }
- 
- .link-white-text:active {
-	color: #fff;
- }
- 

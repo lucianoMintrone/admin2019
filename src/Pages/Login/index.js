@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
@@ -61,9 +62,10 @@ const Login = ({ history }) => {
 								{error}
 							</span>
 						</div>
+
+						<div class="flex-c"><Link to="/register" class="txt1">Registrarse</Link></div>
 					</form>
-					<div class="login100-more">
-					</div>
+					<div class="login100-more"></div>
 				</div>
 			</div>
 		</div>
