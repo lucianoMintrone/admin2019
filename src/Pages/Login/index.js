@@ -5,7 +5,7 @@ import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 import Checkbox from '../../Components/Checkbox';
 
-import '../../utils.css';
+import '../../assets/css/utils.css';
 import './styles.css';
 
 const validateLoginForm = (email, password, type, setError, history) => {

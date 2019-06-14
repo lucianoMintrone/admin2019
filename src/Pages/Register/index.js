@@ -3,7 +3,7 @@ import React from 'react';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
 
-import '../../utils.css';
+import '../../assets/css/utils.css';
 import './styles.css';
 
 const Register = () => (
