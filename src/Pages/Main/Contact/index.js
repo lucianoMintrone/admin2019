@@ -84,7 +84,7 @@ const Contact = () => (
 										<p class="form-message"></p>
 										<div class="col-lg-12">
 											<div class="single-form form-group">
-												<button class="main-btn" type="submit">CONTACTAR YA</button>
+												<button class="main-btn" type="submit" onClick={e => e.preventDefault()}>CONTACTAR YA</button>
 											</div>
 										</div>
 									</div>
