@@ -7,6 +7,7 @@ import '../assets/css/LineIcons.css';
 import './styles.css';
 
 import Header from '../../../Components/Header';
+import Button from '../../../Components/Main/Button';
 
 const Contact = () => (
 	<div>
@@ -82,11 +83,7 @@ const Contact = () => (
 											</div>
 										</div>
 										<p class="form-message"></p>
-										<div class="col-lg-12">
-											<div class="single-form form-group">
-												<button class="main-btn" type="submit" onClick={e => e.preventDefault()}>CONTACTAR YA</button>
-											</div>
-										</div>
+										<Button title="CONTACTAR YA" onClick={e => e.preventDefault()} />
 									</div>
 								</form>
 							</div>

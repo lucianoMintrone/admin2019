@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Input from '../../Components/Input';
-import Button from '../../Components/Button';
-import Checkbox from '../../Components/Checkbox';
+import Input from '../../Components/Login/Input';
+import Button from '../../Components/Login/Button';
+import Checkbox from '../../Components/Login/Checkbox';
 
 import '../../assets/css/utils.css';
 import './styles.css';

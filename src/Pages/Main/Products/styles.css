@@ -1,0 +1,69 @@
+@media (max-width: 767px) {
+    .product-area {
+      padding-top: 50px;
+      padding-bottom: 80px; } }
+.product-area {
+  padding-top: 20px;
+  padding-bottom: 80px;
+}
+.product-items-active .slick-arrow {
+    position: absolute;
+    right: -80px;
+    z-index: 9;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+      .product-items-active .slick-arrow {
+        right: -40px; } }
+    @media only screen and (min-width: 768px) and (max-width: 991px) {
+      .product-items-active .slick-arrow {
+        right: -20px; } }
+    .product-items-active .slick-arrow.prev {
+      bottom: 35%; }
+      @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+        .product-items-active .slick-arrow.prev {
+          bottom: 38%; } }
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .product-items-active .slick-arrow.prev {
+          bottom: 40%; } }
+    .product-items-active .slick-arrow.next {
+      top: 35%; }
+      @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+        .product-items-active .slick-arrow.next {
+          top: 38%; } }
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .product-items-active .slick-arrow.next {
+          top: 40%; } }
+    .product-items-active .slick-arrow i {
+      font-size: 18px;
+      color: #fe7865;
+      width: 50px;
+      line-height: 48px;
+      border-radius: 50%;
+      border: 1px solid #fe7865;
+      background-color: #fff;
+      text-align: center;
+      cursor: pointer;
+      -webkit-transition: all 0.4s ease-out 0s;
+      -moz-transition: all 0.4s ease-out 0s;
+      -ms-transition: all 0.4s ease-out 0s;
+      -o-transition: all 0.4s ease-out 0s;
+      transition: all 0.4s ease-out 0s; }
+      @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+        .product-items-active .slick-arrow i {
+          width: 40px;
+          line-height: 38px;
+          font-size: 16px; } }
+      @media only screen and (min-width: 768px) and (max-width: 991px) {
+        .product-items-active .slick-arrow i {
+          width: 30px;
+          line-height: 28px;
+          font-size: 16px; } }
+      .product-items-active .slick-arrow i:hover {
+        background-color: #fe7865;
+        border-color: #fe7865;
+        color: #fff; }
+  

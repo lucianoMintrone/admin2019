@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Input from '../../Components/Input';
-import Button from '../../Components/Button';
+import Input from '../../Components/Login/Input';
+import Button from '../../Components/Login/Button';
 
 import '../../assets/css/utils.css';
 import './styles.css';
