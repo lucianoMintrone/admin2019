@@ -15,3 +15,14 @@ ReactDOM.render((
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+const users = {
+	admin: [
+		{ email: 'admin@test.com', password: 'password' }
+	],
+	client: [
+		{ email: 'client@test.com', password: 'password' }
+	]
+};
+
+localStorage.setItem('users', JSON.stringify(users));
