@@ -16,13 +16,9 @@ ReactDOM.render((
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-const users = {
-	admin: [
-		{ email: 'admin@test.com', password: 'password' }
-	],
-	client: [
-		{ email: 'client@test.com', password: 'password' }
-	]
-};
+const users = [
+	{ email: 'admin@test.com', password: 'password', type: 'admin' },
+	{ email: 'client@test.com', password: 'password', type: 'client' }
+];
 
 localStorage.setItem('users', JSON.stringify(users));
