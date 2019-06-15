@@ -15,6 +15,33 @@ body {
 img {
   max-width: 100%; }
 
+.hero h1 {
+    /* Text styles */
+    font-size: 5em;
+    color: white;
+}
+
+.hero {
+      /* Sizing */
+      width: 100vw;
+      height: 100vh;
+
+      /* Flexbox stuff */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      /* Text styles */
+      text-align: center;
+
+      /* Background styles */
+      background-image: url(https://codetheweb.blog/assets/img/posts/full-image-hero/image.jpg);
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+}
+
 a:focus,
 input:focus,
 textarea:focus,
