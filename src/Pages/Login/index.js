@@ -7,11 +7,13 @@ import Button from '../../Components/Login/Button';
 import '../../assets/css/utils.css';
 import './styles.css';
 
+const persistCurrentUser = user => {
+	localStorage.setItem('currentUser', user);
+};
+
 const userIsValid = (email, password) => {
 	const users = JSON.parse(localStorage.getItem('users'));
-	return Object.keys(users)
-		.find(userType => !!users[userType]
-			.find(({ email: e, password: p }) => e === email && p === password));
+	return users.find(({ email: e, password: p }) => e === email && p === password);
 };
 
 const validateLoginForm = (email, password, setError, history) => {
@@ -23,7 +25,11 @@ const validateLoginForm = (email, password, setError, history) => {
 		errorMessage += ' Contraseña demasiado corta (min 6).';
 	}
 	if (errorMessage === '') {
-		if (userIsValid(email, password)) history.push('/home');
+		const user = userIsValid(email, password);
+		if (user) {
+			persistCurrentUser(user)
+			history.push('/home');
+		}
 		errorMessage = ' Email o contraseña inválido.';
 	}
 	setError(errorMessage);

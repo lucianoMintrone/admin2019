@@ -8,7 +8,7 @@ import './styles.css';
 
 const addUser = (newUser) => {
     const users = JSON.parse(localStorage.getItem('users'));
-    users.client.push(newUser);
+    users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
 };
 
@@ -24,7 +24,7 @@ const validateRegisterForm = (email, password, confirmPassword, setError, histor
 		errorMessage += ' Las contraseñas no coinciden.';
 	}
 	if (errorMessage === '') {
-        addUser({ email, password });
+        addUser({ email, password, type: 'client' });
 		history.push('/home');
 	}
 	setError(errorMessage);
