@@ -20,7 +20,8 @@ const Company = () => (
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					<div class="contact-title text-center">
-						<p>Somos...</p>
+						<p>Somos un grupo de profecionales de la salud, dedicados a mejorarle la experiencia a nuestros clientes.
+						Brindando productos de primera calidad</p>
 					</div>
 				</div>
 			</div>
@@ -35,7 +36,8 @@ const Company = () => (
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					<div class="contact-title text-center">
-						<p>Redactar Misión</p>
+						<p>Brindarle a la comunidad con soluciones de la salud de vanguardia.
+						De forma transparente y segura</p>
 					</div>
 				</div>
 			</div>
@@ -50,7 +52,8 @@ const Company = () => (
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					<div class="contact-title text-center">
-						<p>Redactar Visión</p>
+						<p>Que la comunidad no tenga que preocuparse por temas de salud
+						y puedan vivir su vida plenamente sin preocupaciones</p>
 					</div>
 				</div>
 			</div>
@@ -65,7 +68,9 @@ const Company = () => (
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
 					<div class="contact-title text-center">
-						<p>Redactar Valores</p>
+						<p>Excelencia,
+						Transparencia,
+						Vanguardia</p>
 					</div>
 				</div>
 			</div>
