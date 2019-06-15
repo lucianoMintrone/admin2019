@@ -8,7 +8,7 @@ import '../../assets/css/utils.css';
 import './styles.css';
 
 const persistCurrentUser = user => {
-	localStorage.setItem('currentUser', user);
+	localStorage.setItem('currentUser', JSON.stringify(user));
 };
 
 const userIsValid = (email, password) => {

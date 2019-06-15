@@ -22,6 +22,11 @@ const productExample = {
 const Products = () => {
 	const [ products, setProducts ] = useState([productExample]);
 
+	const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+	const userIsAdmin = () => {
+		return currentUser && currentUser.type === 'admin';
+	}
+
 	return (
 		<div>
 			<Header activeSection="products" />
@@ -53,7 +58,7 @@ const Products = () => {
 												/>)
 											}
 										</div>
-										<Button title="AGREGAR PRODUCTO" onClick={() => setProducts([...products, productExample])} />
+										{ userIsAdmin() && <Button title="AGREGAR PRODUCTO" onClick={() => setProducts([...products, productExample])} /> }
 									</div>
 								</div>
 							</div>
