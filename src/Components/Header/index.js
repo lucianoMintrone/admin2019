@@ -34,7 +34,7 @@ const Header = ({ activeSection }) => (
                                 <li class={`nav-item ${activeSection === 'contact' && 'active'}`}>
                                     <Link to="/contact" data-scroll-nav="0">Contacto</Link>
                                 </li>
-                                <li class={`nav-item ${activeSection === 'contact' && 'active'}`}>
+                                <li class="nav-item">
                                     <Link to="/" data-scroll-nav="0">
 										<i class="lni-exit"></i>
                                     </Link>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, number } from 'prop-types';
+import { string } from 'prop-types';
 
 import './styles.css';
 
@@ -23,12 +23,6 @@ const Product = ({
             <div class="product-item-content text-center mt-30">
                 <h5 class="product-title"><a>{name} - {size}</a></h5>
                 <p class="product-title">{description}</p>
-                <ul class="rating">
-                    <li><i class="lni-star-filled"></i></li>
-                    <li><i class="lni-star-filled"></i></li>
-                    <li><i class="lni-star-filled"></i></li>
-                    <li><i class="lni-star-filled"></i></li>
-                </ul>
                 <span class="regular-price">${price}</span>
                 {/* <span class="discount-price">$69.00</span> */}
             </div>
@@ -40,7 +34,7 @@ Product.propTypes = {
     code: string.isRequired,
     name: string.isRequired,
     description: string.isRequired,
-    image: number.isRequired,
+    image: string.isRequired,
     price: string.isRequired,
     size: string.isRequired,
     activePrinciple: string.isRequired

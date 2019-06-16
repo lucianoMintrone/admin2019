@@ -11,8 +11,8 @@
       -o-transition: all 0.4s ease-out 0s;
       transition: all 0.4s ease-out 0s; }
     .single-product-items .product-item-image .product-discount-tag {
-      width: 70px;
-      height: 70px;
+      width: 50px;
+      height: 50px;
       background-color: #fe7865;
       position: absolute;
       top: 20px;
@@ -22,8 +22,8 @@
       .single-product-items .product-item-image .product-discount-tag p {
         color: #fff;
         font-weight: 600;
-        font-size: 22px;
-        line-height: 70px; }
+        font-size: 14px;
+        line-height: 50px; }
   .single-product-items .product-item-content .product-title a {
     font-size: 20px;
     color: #333;

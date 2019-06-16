@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
+import ProductModal from '../../../Components/Main/ProductModal';
 
 import '../assets/css/animate.css';
 import '../assets/css/bootstrap.min.css';
@@ -9,26 +10,39 @@ import Header from '../../../Components/Header';
 import Product from '../../../Components/Main/Product';
 import Button from '../../../Components/Main/Button';
 
-const productExample = {
-	code: 1,
-	name: 'Product Name',
-	description: 'Descripción del Producto...',
-	image: require("../../../assets/images/products/p-2.jpg"),
-	price: 100,
-	size: '70ml',
-	activePrinciple: '?'
-};
+// const addProduct = (newProduct) => {
+// 	const currentProducts = JSON.parse(localStorage.getItem('products'));
+// 	let newProducts;
+// 	if (currentProducts) newProducts = [ ...currentProducts, newProduct ];
+// 	else newProducts = [ newProduct ];
+// 	localStorage.setItem('products', JSON.stringify(newProducts));
+// }
 
 const Products = () => {
-	const [ products, setProducts ] = useState([productExample]);
+	const [ products, setProducts ] = useState([]);
+	const [ showCreateModal, setShowCreateModal ] = useState(false);
 
 	const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	const userIsAdmin = () => {
 		return currentUser && currentUser.type === 'admin';
 	}
 
+	const onSubmitNewProduct = (newProduct) => {
+		// addProduct(newProduct)
+		setProducts([ ...products, newProduct ]);
+		setShowCreateModal(false);
+	}
+
 	return (
-		<div>
+		<Fragment>
+			{
+				showCreateModal && (
+					<ProductModal
+						close={() => setShowCreateModal(false)}
+						onSubmit={onSubmitNewProduct}
+					/>
+				)
+			}
 			<Header activeSection="products" />
 			<section id="product" class="product-area pt-100 pb-130">
 				<div class="container">
@@ -48,6 +62,7 @@ const Products = () => {
 													size,
 													activePrinciple
 												}) => <Product
+													key={code}
 													code={code}
 													name={name}
 													description={description}
@@ -58,7 +73,7 @@ const Products = () => {
 												/>)
 											}
 										</div>
-										{ userIsAdmin() && <Button title="AGREGAR PRODUCTO" onClick={() => setProducts([...products, productExample])} /> }
+										{ userIsAdmin() && <Button title="AGREGAR PRODUCTO" onClick={() => setShowCreateModal(true)} /> }
 									</div>
 								</div>
 							</div>
@@ -66,7 +81,7 @@ const Products = () => {
 					</div>
 				</div>
 			</section>
-		</div>
+		</Fragment>
 	);
 };
 
