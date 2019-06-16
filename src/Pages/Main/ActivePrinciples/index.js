@@ -3,27 +3,21 @@ import React, { Fragment, useState } from 'react';
 import Header from '../../../Components/Header';
 import ActivePrincipleModal from '../../../Components/Main/ActivePrincipleModal';
 
-const addActivePrinciples = (newAP) => {
-	const currentAPs = JSON.parse(localStorage.getItem('products'));
-	let newAPs;
-	if (currentAPs) newAPs = [ ...currentAPs, newAP ];
-	else newAPs = [ newAP ];
-	localStorage.setItem('activePrinciples', JSON.stringify(newAPs));
-}
-
 const ActivePrinciples = () => {
     const [ activePrinciples, setActivePrinciple ] = useState(JSON.parse(localStorage.getItem('activePrinciples')) || []);
 	const [ showCreateModal, setShowCreateModal ] = useState({ activePrinciple: undefined, open: false });
 
 	const onSubmitNewActivePrinciple = (newAP) => {
-		addActivePrinciples(newAP)
 		let index = activePrinciples.findIndex(ap => ap.code === newAP.code);
+		let currentAPs;
 		if (index > -1) {
 			activePrinciples.splice(index, 1, newAP);
-			setActivePrinciple([ ...activePrinciples ]);
+			currentAPs = [ ...activePrinciples ];
 		} else {
-			setActivePrinciple([ ...activePrinciples, newAP ]);
+			currentAPs = [ ...activePrinciples, newAP ];
 		}
+		setActivePrinciple(currentAPs);
+		localStorage.setItem('activePrinciples', JSON.stringify(currentAPs));
 		setShowCreateModal({ activePrinciple: undefined, open: false });
 	}
 
@@ -59,7 +53,7 @@ const ActivePrinciples = () => {
                 <tbody>
                     {
                         activePrinciples.map(ap => (
-                            <tr style={{ cursor: 'pointer' }} onClick={() => setShowCreateModal({ activePrinciple: ap, open: true })}>
+                            <tr key={ap.code} style={{ cursor: 'pointer' }} onClick={() => setShowCreateModal({ activePrinciple: ap, open: true })}>
                                 <td>{ap.code}</td>
                                 <td>{ap.name}</td>
                                 <td>{ap.description}</td>

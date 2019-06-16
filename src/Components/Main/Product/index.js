@@ -31,6 +31,7 @@ const Product = ({
                 <div class="product-item-content text-center mt-30">
                     <h5 class="product-title"><a>{name} - {size}</a></h5>
                     <p class="product-title">{description}</p>
+                    <p class="product-title" style={{ fontSize: 12 }}>Principio Activo: {activePrinciple}</p>
                     <span class="regular-price">${price}</span>
                     {/* <span class="discount-price">$69.00</span> */}
                 </div>

@@ -57,7 +57,7 @@ const Users = () => {
                         users
                             .filter(user => user.type === 'admin')
                             .map((user, index) => (
-                                <tr style={{ cursor: 'pointer' }} onClick={() => setShowCreateModal({ user: { ...user, passwordConfirm: user.password }, open: true })}>
+                                <tr key={user.email} style={{ cursor: 'pointer' }} onClick={() => setShowCreateModal({ user: { ...user, passwordConfirm: user.password }, open: true })}>
                                     <th scope="row">{index + 1}</th>
                                     <td>{user.firstname}</td>
                                     <td>{user.lastname}</td>

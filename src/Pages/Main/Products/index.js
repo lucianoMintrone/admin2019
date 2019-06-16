@@ -10,14 +10,6 @@ import Header from '../../../Components/Header';
 import Product from '../../../Components/Main/Product';
 import Button from '../../../Components/Main/Button';
 
-const addProduct = (newProduct) => {
-	const currentProducts = JSON.parse(localStorage.getItem('products'));
-	let newProducts;
-	if (currentProducts) newProducts = [ ...currentProducts, newProduct ];
-	else newProducts = [ newProduct ];
-	localStorage.setItem('products', JSON.stringify(newProducts));
-}
-
 const Products = () => {
 	const [ products, setProducts ] = useState(JSON.parse(localStorage.getItem('products')) || []);
 	const [ showCreateModal, setShowCreateModal ] = useState({ product: undefined, open: false });
@@ -28,14 +20,16 @@ const Products = () => {
 	}
 
 	const onSubmitNewProduct = (newProduct) => {
-		addProduct(newProduct)
 		let index = products.findIndex(product => product.code === newProduct.code);
+		let currentProducts;
 		if (index > -1) {
 			products.splice(index, 1, newProduct);
-			setProducts([ ...products ]);
+			currentProducts = [ ...products ];
 		} else {
-			setProducts([ ...products, newProduct ]);
+			currentProducts = [ ...products, newProduct ];
 		}
+		setProducts(currentProducts);
+		localStorage.setItem('products', JSON.stringify(currentProducts));
 		setShowCreateModal({ product: undefined, open: false });
 	}
 
@@ -84,7 +78,7 @@ const Products = () => {
 													image={image}
 													price={price}
 													size={size}
-													activePrinciple={activePrinciple}
+													activePrinciple={activePrinciple.name}
 													onDelete={deleteProduct}
 													onClick={() => setShowCreateModal({
 														product: { code, name, description, image, price, size, activePrinciple },

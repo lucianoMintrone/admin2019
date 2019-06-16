@@ -5,6 +5,8 @@ import Button from '../Button';
 
 import './styles.css';
 
+const activePrinciples = JSON.parse(localStorage.getItem('activePrinciples')) || [];
+
 const validateNewProductForm = (newProduct, setError, submit) => {
 	let errorMessage = '';
 	if (newProduct.code === '') errorMessage = 'Código es requerido.';
@@ -12,8 +14,9 @@ const validateNewProductForm = (newProduct, setError, submit) => {
     if (newProduct.price === '') errorMessage += ' Precio es requerido.';
     if (newProduct.size === '') errorMessage += ' Tamaño es requerido.';
     if (newProduct.description === '') errorMessage += ' Descripción es requerido.';
+    if (newProduct.activePrinciple === '') errorMessage += ' Principio Activo es requerido.';
     if (newProduct.image === '') errorMessage += ' Imagen es requerido.';
-	if (errorMessage === '') submit(newProduct);
+	if (errorMessage === '') submit({ ...newProduct, activePrinciple: activePrinciples.find(ap => ap.code === newProduct.activePrinciple) });
 	setError(errorMessage);
 }
 
@@ -61,6 +64,23 @@ const ProductModal = ({ onSubmit, product, close, edit }) => {
                     </div>
                 </div>
             </div>
+            <select
+                style={{ marginTop: 30 }}
+                onChange={e => setActivePrinciple(e.target.value)}
+                value={activePrinciple}
+            >
+                <option value="" disabled>Seleccionar Principio Activo</option>
+                {
+                    activePrinciples.map(ap => (
+                        <option
+                            key={ap.code}
+                            value={ap.code}
+                        >
+                            {ap.code} - {ap.name}
+                        </option>
+                    ))
+                }
+            </select>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="single-form form-group">
@@ -68,7 +88,7 @@ const ProductModal = ({ onSubmit, product, close, edit }) => {
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style={{ marginTop: 30 }}>
                 <div class="col-lg-12">
                     <input onChange={e => setImage(URL.createObjectURL(e.target.files[0]))} type="file" name="image" placeholder="Imagen" />
                 </div>
