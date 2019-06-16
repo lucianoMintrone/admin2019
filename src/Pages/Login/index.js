@@ -28,7 +28,7 @@ const validateLoginForm = (email, password, setError, history) => {
 		const user = userIsValid(email, password);
 		if (user) {
 			persistCurrentUser(user)
-			history.push('/home');
+			history.push(user.type === 'admin' ? '/products' : '/home');
 		}
 		errorMessage = ' Email o contraseña inválido.';
 	}
