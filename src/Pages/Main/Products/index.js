@@ -10,16 +10,16 @@ import Header from '../../../Components/Header';
 import Product from '../../../Components/Main/Product';
 import Button from '../../../Components/Main/Button';
 
-// const addProduct = (newProduct) => {
-// 	const currentProducts = JSON.parse(localStorage.getItem('products'));
-// 	let newProducts;
-// 	if (currentProducts) newProducts = [ ...currentProducts, newProduct ];
-// 	else newProducts = [ newProduct ];
-// 	localStorage.setItem('products', JSON.stringify(newProducts));
-// }
+const addProduct = (newProduct) => {
+	const currentProducts = JSON.parse(localStorage.getItem('products'));
+	let newProducts;
+	if (currentProducts) newProducts = [ ...currentProducts, newProduct ];
+	else newProducts = [ newProduct ];
+	localStorage.setItem('products', JSON.stringify(newProducts));
+}
 
 const Products = () => {
-	const [ products, setProducts ] = useState([]);
+	const [ products, setProducts ] = useState(JSON.parse(localStorage.getItem('products')) || []);
 	const [ showCreateModal, setShowCreateModal ] = useState({ product: undefined, open: false });
 
 	const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -28,7 +28,7 @@ const Products = () => {
 	}
 
 	const onSubmitNewProduct = (newProduct) => {
-		// addProduct(newProduct)
+		addProduct(newProduct)
 		let index = products.findIndex(product => product.code === newProduct.code);
 		if (index > -1) {
 			products.splice(index, 1, newProduct);
@@ -43,6 +43,7 @@ const Products = () => {
 		const index = products.findIndex(product => product.code === code);
 		products.splice(index, 1);
 		setProducts([ ...products ]);
+		localStorage.setItem('products', JSON.stringify([ ...products ]));
 	}
 
 	return (
