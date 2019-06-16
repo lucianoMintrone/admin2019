@@ -1,5 +1,5 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { string, func } from 'prop-types';
 
 import './styles.css';
 
@@ -10,7 +10,8 @@ const Product = ({
     image,
     price,
     size,
-    activePrinciple
+    activePrinciple,
+    onDelete
 }) => (
     <div class="col-md-4">
         <div class="single-product-items">
@@ -26,6 +27,7 @@ const Product = ({
                 <span class="regular-price">${price}</span>
                 {/* <span class="discount-price">$69.00</span> */}
             </div>
+            <button class="delete-button" onClick={() => onDelete(code)}>Delete</button>
         </div>
     </div>
 );
@@ -37,7 +39,12 @@ Product.propTypes = {
     image: string.isRequired,
     price: string.isRequired,
     size: string.isRequired,
-    activePrinciple: string.isRequired
-}
+    activePrinciple: string.isRequired,
+    onDelete: func
+};
+
+Product.defaultProps = {
+    onDelete: () => {}
+};
 
 export default Product;

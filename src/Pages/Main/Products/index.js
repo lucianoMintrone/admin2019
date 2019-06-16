@@ -33,6 +33,12 @@ const Products = () => {
 		setShowCreateModal(false);
 	}
 
+	const deleteProduct = (code) => {
+		const index = products.findIndex(product => product.code === code);
+		products.splice(index, 1);
+		setProducts([ ...products ]);
+	}
+
 	return (
 		<Fragment>
 			{
@@ -70,6 +76,7 @@ const Products = () => {
 													price={price}
 													size={size}
 													activePrinciple={activePrinciple}
+													onDelete={deleteProduct}
 												/>)
 											}
 										</div>
