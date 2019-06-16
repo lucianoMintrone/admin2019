@@ -40,6 +40,13 @@ const Header = ({ activeSection }) => {
                                     </li>
                                     {
                                         userIsAdmin() && (
+                                            <li class={`nav-item ${activeSection === 'activePrinciples' && 'active'}`}>
+                                                <Link to="/active-principles" data-scroll-nav="0">Principios Activos</Link>
+                                            </li>
+                                        )
+                                    }
+                                    {
+                                        userIsAdmin() && (
                                             <li class={`nav-item ${activeSection === 'users' && 'active'}`}>
                                                 <Link to="/users" data-scroll-nav="0">Usuarios</Link>
                                             </li>
