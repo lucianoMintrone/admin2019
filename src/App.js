@@ -7,6 +7,7 @@ import Home from './Pages/Main/Home';
 import Contact from './Pages/Main/Contact';
 import Company from './Pages/Main/Company';
 import Products from './Pages/Main/Products';
+import Users from './Pages/Main/Users';
 
 const App = () => (
 	<Switch>
@@ -16,6 +17,7 @@ const App = () => (
 		<Route path='/products' component={Products} />
 		<Route path='/company' component={Company} />
 		<Route path='/contact' component={Contact} />
+		<Route path='/users' component={Users} />
 	</Switch>
 );
 

@@ -39,6 +39,13 @@ const Header = ({ activeSection }) => {
                                         <Link to="/products" data-scroll-nav="0">Productos</Link>
                                     </li>
                                     {
+                                        userIsAdmin() && (
+                                            <li class={`nav-item ${activeSection === 'users' && 'active'}`}>
+                                                <Link to="/users" data-scroll-nav="0">Usuarios</Link>
+                                            </li>
+                                        )
+                                    }
+                                    {
                                         !userIsAdmin() && (
                                             <li class={`nav-item ${activeSection === 'company' && 'active'}`}>
                                                 <Link to="/company" data-scroll-nav="0">Empresa</Link>

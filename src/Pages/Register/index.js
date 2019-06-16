@@ -12,8 +12,10 @@ const addUser = (newUser) => {
     localStorage.setItem('users', JSON.stringify(users));
 };
 
-const validateRegisterForm = (email, password, confirmPassword, setError, history) => {
-	let errorMessage = '';
+const validateRegisterForm = (email, password, firstname, lastname, confirmPassword, setError, history) => {
+    let errorMessage = '';
+    if (firstname === '') errorMessage = 'Nombre es requerido.';
+    if (lastname === '') errorMessage += ' Apellido es requerido.';
 	if (!RegExp(/^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/).test(email)) {
 		errorMessage = 'Email inválido.';
 	} 
@@ -33,6 +35,8 @@ const validateRegisterForm = (email, password, confirmPassword, setError, histor
 const Register = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 	const [error, setError] = useState('');
     
@@ -40,17 +44,21 @@ const Register = ({ history }) => {
         <div class="limiter">
             <div class="container-login100">
                 <div class="wrap-login100">
-                    <form class="login100-form validate-form" onSubmit={e => { e.preventDefault(); validateRegisterForm(email, password, confirmPassword, setError, history); }}>
+                    <form class="login100-form validate-form" onSubmit={e => { e.preventDefault(); validateRegisterForm(email, password, firstname, lastname, confirmPassword, setError, history); }}>
                         <span class="login100-form-title p-b-43">
                             Registro Cliente
                         </span>
                         <Input
                             placeholder="Nombre"
                             name="firstname"
+                            value={firstname}
+							onChange={({ target: { value } }) => setFirstname(value)}
                         />
                         <Input
                             placeholder="Apellido"
                             name="lastname"
+                            value={lastname}
+							onChange={({ target: { value } }) => setLastname(value)}
                         />
                         <Input
                             placeholder="Email"
@@ -74,7 +82,7 @@ const Register = ({ history }) => {
                         />
                         <Button
                             title="Registrarse"
-                            onClick={() => validateRegisterForm(email, password, confirmPassword, setError, history)}
+                            onClick={() => validateRegisterForm(email, password, firstname, lastname, confirmPassword, setError, history)}
                         />
 
                         <div class="text-center p-t-46 p-b-20">

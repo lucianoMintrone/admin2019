@@ -17,7 +17,7 @@ ReactDOM.render((
 serviceWorker.unregister();
 
 const users = [
-	{ email: 'admin@test.com', password: 'password', type: 'admin' },
+	{ email: 'admin@test.com', password: 'password', firstname: 'Admin', lastname: 'Test', type: 'admin' },
 	{ email: 'client@test.com', password: 'password', type: 'client' }
 ];
 
