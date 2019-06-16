@@ -20,7 +20,7 @@ import Button from '../../../Components/Main/Button';
 
 const Products = () => {
 	const [ products, setProducts ] = useState([]);
-	const [ showCreateModal, setShowCreateModal ] = useState(false);
+	const [ showCreateModal, setShowCreateModal ] = useState({ product: undefined, open: false });
 
 	const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 	const userIsAdmin = () => {
@@ -29,8 +29,14 @@ const Products = () => {
 
 	const onSubmitNewProduct = (newProduct) => {
 		// addProduct(newProduct)
-		setProducts([ ...products, newProduct ]);
-		setShowCreateModal(false);
+		let index = products.findIndex(product => product.code === newProduct.code);
+		if (index > -1) {
+			products.splice(index, 1, newProduct);
+			setProducts([ ...products ]);
+		} else {
+			setProducts([ ...products, newProduct ]);
+		}
+		setShowCreateModal({ product: undefined, open: false });
 	}
 
 	const deleteProduct = (code) => {
@@ -42,9 +48,11 @@ const Products = () => {
 	return (
 		<Fragment>
 			{
-				showCreateModal && (
+				showCreateModal.open && (
 					<ProductModal
-						close={() => setShowCreateModal(false)}
+						close={() => setShowCreateModal({ product: undefined, open: false })}
+						product={showCreateModal.product}
+						edit={showCreateModal.product}
 						onSubmit={onSubmitNewProduct}
 					/>
 				)
@@ -77,10 +85,14 @@ const Products = () => {
 													size={size}
 													activePrinciple={activePrinciple}
 													onDelete={deleteProduct}
+													onClick={() => setShowCreateModal({
+														product: { code, name, description, image, price, size, activePrinciple },
+														open: true
+													})}
 												/>)
 											}
 										</div>
-										{ userIsAdmin() && <Button title="AGREGAR PRODUCTO" onClick={() => setShowCreateModal(true)} /> }
+										{ userIsAdmin() && <Button title="AGREGAR PRODUCTO" onClick={() => setShowCreateModal({ product: undefined, open: true })} /> }
 									</div>
 								</div>
 							</div>

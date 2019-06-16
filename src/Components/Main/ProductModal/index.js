@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { func, shape, string, bool } from 'prop-types';
 
 import Button from '../Button';
 
@@ -11,19 +12,19 @@ const validateNewProductForm = (newProduct, setError, submit) => {
     if (newProduct.price === '') errorMessage += ' Precio es requerido.';
     if (newProduct.size === '') errorMessage += ' Tamaño es requerido.';
     if (newProduct.description === '') errorMessage += ' Descripción es requerido.';
-    if (!newProduct.image) errorMessage += ' Imagen es requerido.';
+    if (newProduct.image === '') errorMessage += ' Imagen es requerido.';
 	if (errorMessage === '') submit(newProduct);
 	setError(errorMessage);
 }
 
-const ProductModal = ({ onSubmit, close }) => {
-    const [code, setCode] = useState('');
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
-    const [size, setSize] = useState('');
-    const [description, setDescription] = useState('');
-    const [image, setImage] = useState(undefined);
-    const [activePrinciple, setActivePrinciple] = useState('');
+const ProductModal = ({ onSubmit, product, close, edit }) => {
+    const [code, setCode] = useState(product.code);
+    const [name, setName] = useState(product.name);
+    const [price, setPrice] = useState(product.price);
+    const [size, setSize] = useState(product.size);
+    const [description, setDescription] = useState(product.description);
+    const [image, setImage] = useState(product.image);
+    const [activePrinciple, setActivePrinciple] = useState(product.activePrinciple);
     const [error, setError] = useState('');
 
     return (
@@ -75,9 +76,39 @@ const ProductModal = ({ onSubmit, close }) => {
             <span style={{ color: '#FF9494' }} class="txt2">
                 {error}
             </span>
-            <Button title="CREAR" onClick={() => validateNewProductForm({ code, name, price, size, description, image, activePrinciple }, setError, onSubmit)} />
+            <Button title={edit ? 'EDITAR' : 'CREAR'} onClick={() => validateNewProductForm({ code, name, price, size, description, image, activePrinciple }, setError, onSubmit)} />
         </div>
     );
 }
+
+ProductModal.propTypes = {
+    onSubmit: func,
+    product: shape({
+        code: string,
+        name: string,
+        description: string,
+        image: string,
+        price: string,
+        size: string,
+        activePrinciple: string
+    }),
+    close: func,
+    edit: bool
+};
+
+ProductModal.defaultProps = {
+    onSubmit: () => {},
+    product: {
+        code: '',
+        name: '',
+        description: '',
+        image: '',
+        price: '',
+        size: '',
+        activePrinciple: ''
+    },
+    close: () => {},
+    edit: false
+};
 
 export default ProductModal

@@ -11,10 +11,11 @@ const Product = ({
     price,
     size,
     activePrinciple,
-    onDelete
+    onDelete,
+    onClick
 }) => (
     <div class="col-md-4">
-        <div class="single-product-items">
+        <div class="single-product-items" style={{ cursor: 'pointer' }} onClick={onClick}>
             <div class="product-item-image">
                 <a><img src={image} alt="Product" /></a>
                 <div class="product-discount-tag">
@@ -27,7 +28,7 @@ const Product = ({
                 <span class="regular-price">${price}</span>
                 {/* <span class="discount-price">$69.00</span> */}
             </div>
-            <button class="delete-button" onClick={() => onDelete(code)}>Delete</button>
+            <button class="delete-button" onClick={e => { e.stopPropagation(); onDelete(code); }}>Delete</button>
         </div>
     </div>
 );
@@ -40,11 +41,13 @@ Product.propTypes = {
     price: string.isRequired,
     size: string.isRequired,
     activePrinciple: string.isRequired,
-    onDelete: func
+    onDelete: func,
+    onClick: func
 };
 
 Product.defaultProps = {
-    onDelete: () => {}
+    onDelete: () => {},
+    onClick: () => {}
 };
 
 export default Product;
