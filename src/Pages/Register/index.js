@@ -10,6 +10,7 @@ const addUser = (newUser) => {
     const users = JSON.parse(localStorage.getItem('users'));
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
 };
 
 const validateRegisterForm = (email, password, firstname, lastname, confirmPassword, setError, history) => {
