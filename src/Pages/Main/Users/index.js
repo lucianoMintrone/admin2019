@@ -35,7 +35,7 @@ const Users = () => {
 				showCreateModal.open && (
 					<UserModal
 						close={() => setShowCreateModal({ user: undefined, open: false })}
-						product={showCreateModal.user}
+						user={showCreateModal.user}
 						edit={showCreateModal.user}
 						onSubmit={onSubmitNewUser}
 					/>
@@ -56,13 +56,13 @@ const Users = () => {
                     {
                         users
                             .filter(user => user.type === 'admin')
-                            .map(({ firstname, lastname, email }, index) => (
-                                <tr>
+                            .map((user, index) => (
+                                <tr style={{ cursor: 'pointer' }} onClick={() => setShowCreateModal({ user: { ...user, passwordConfirm: user.password }, open: true })}>
                                     <th scope="row">{index + 1}</th>
-                                    <td>{firstname}</td>
-                                    <td>{lastname}</td>
-                                    <td>{email}</td>
-                                    <td onClick={() => deleteUser(email)} style={{ cursor: 'pointer', color: 'red' }}><i class="lni-trash"></i></td>
+                                    <td>{user.firstname}</td>
+                                    <td>{user.lastname}</td>
+                                    <td>{user.email}</td>
+                                    <td onClick={e => { e.stopPropagation(); deleteUser(user.email); }} style={{ cursor: 'pointer', color: 'red' }}><i class="lni-trash"></i></td>
                                 </tr>
                             ))
                     }
