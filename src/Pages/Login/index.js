@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Input from '../../Components/Login/Input';
 import Button from '../../Components/Login/Button';
+import RecoverPasswordModal from '../../Components/RecoverPasswordModal';
 
 import '../../assets/css/utils.css';
 import './styles.css';
@@ -38,10 +39,12 @@ const validateLoginForm = (email, password, setError, history) => {
 const Login = ({ history }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [showRecoverModal, setShowRecoverModal] = useState(false);
 	const [error, setError] = useState('');
 
 	return (
 		<div class="limiter">
+			{ showRecoverModal && <RecoverPasswordModal close={() => setShowRecoverModal(false)} /> }
 			<div class="container-login100">
 				<div class="wrap-login100">
 					<form class="login100-form validate-form" onSubmit={e => { e.preventDefault(); validateLoginForm(email, password, setError, history); }}>
@@ -73,6 +76,7 @@ const Login = ({ history }) => {
 						</div>
 
 						<div class="flex-c"><Link to="/register" class="txt1">Registrarse</Link></div>
+						<div class="flex-sa"><Link class="txt1" onClick={() => setShowRecoverModal(true)}>Recuperar Contraseña</Link></div>
 					</form>
 					<div class="login100-more"></div>
 				</div>
