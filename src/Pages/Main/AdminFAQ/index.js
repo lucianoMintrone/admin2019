@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import Header from '../../../Components/Header';
 
 const AdminFAQ = () => (
-	<div>
+	<Fragment>
 		<Header activeSection="admin-faq" />
 		<div class="container">
 			<div class="row justify-content-center">
@@ -72,7 +72,7 @@ const AdminFAQ = () => (
 				</div>
 			</div>
 		</div>
-	</div>
+	</Fragment>
 );
 
 export default AdminFAQ;
