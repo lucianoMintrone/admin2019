@@ -66,7 +66,7 @@ const Products = () => {
 					<ProductModal
 						close={() => setShowCreateModal({ product: undefined, open: false })}
 						product={showCreateModal.product}
-						edit={showCreateModal.product}
+						edit={!!showCreateModal.product}
 						onSubmit={onSubmitNewProduct}
 					/>
 				)

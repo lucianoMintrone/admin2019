@@ -5,9 +5,7 @@ import Button from '../Button';
 
 import './styles.css';
 
-const activePrinciples = JSON.parse(localStorage.getItem('activePrinciples')) || [];
-
-const validateNewProductForm = (newProduct, setError, submit) => {
+const validateNewProductForm = (newProduct, setError, activePrinciples, submit) => {
 	let errorMessage = '';
 	if (newProduct.code === '') errorMessage = 'Código es requerido.';
     if (newProduct.name === '') errorMessage += ' Nombre es requerido.';
@@ -29,6 +27,8 @@ const ProductModal = ({ onSubmit, product, close, edit }) => {
     const [image, setImage] = useState(product.image);
     const [activePrinciple, setActivePrinciple] = useState(product.activePrinciple);
     const [error, setError] = useState('');
+
+    const activePrinciples = JSON.parse(localStorage.getItem('activePrinciples')) || [];
 
     return (
         <div class="popup">
@@ -96,7 +96,7 @@ const ProductModal = ({ onSubmit, product, close, edit }) => {
             <span style={{ color: '#FF9494' }} class="txt2">
                 {error}
             </span>
-            <Button title={edit ? 'EDITAR' : 'CREAR'} onClick={() => validateNewProductForm({ code, name, price, size, description, image, activePrinciple }, setError, onSubmit)} />
+            <Button title={edit ? 'EDITAR' : 'CREAR'} onClick={() => validateNewProductForm({ code, name, price, size, description, image, activePrinciple }, setError, activePrinciples, onSubmit)} />
         </div>
     );
 }
