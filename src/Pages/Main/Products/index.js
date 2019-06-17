@@ -12,6 +12,7 @@ import Button from '../../../Components/Main/Button';
 
 const Products = () => {
 	const [ products, setProducts ] = useState(JSON.parse(localStorage.getItem('products')) || []);
+	const [ searchText, setSearchText ] = useState('');
 	const [ showCreateModal, setShowCreateModal ] = useState({ product: undefined, open: false });
 
 	const currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -40,6 +41,24 @@ const Products = () => {
 		localStorage.setItem('products', JSON.stringify([ ...products ]));
 	}
 
+	const search = () => {
+		const products = JSON.parse(localStorage.getItem('products'));
+		if (searchText === '') setProducts(products);
+		else {
+			const findedProducts = products.filter(product => {
+				return product.code === searchText
+					|| product.name.toLowerCase().includes(searchText)
+					|| product.description.toLowerCase().includes(searchText)
+					|| product.price === searchText
+					|| product.size.toLowerCase() === searchText
+					|| product.activePrinciple.code === searchText
+					|| product.activePrinciple.name.toLowerCase().includes(searchText)
+					|| product.activePrinciple.description.toLowerCase().includes(searchText)
+			});
+			setProducts(findedProducts);
+		}
+	}
+
 	return (
 		<Fragment>
 			{
@@ -56,6 +75,16 @@ const Products = () => {
 			<section id="product" class="product-area pt-100 pb-130">
 				<div class="container">
 					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-form form-group">
+								<input value={searchText} onChange={e => setSearchText(e.target.value)} type="text" name="search" placeholder="Buscar..." />
+							</div>
+						</div>
+						<div class="single-form form-group">
+							<i onClick={search} class="lni-search size-md" style={{ cursor: 'pointer', paddingTop: 10 }}></i>
+						</div>
+					</div>
+					<div class="row" style={{ marginTop: 30 }}>
 						<div class="col-lg-9 col-md-8">
 							<div class="tab-content">
 								<div class="tab-pane fade show active">
@@ -81,7 +110,7 @@ const Products = () => {
 													activePrinciple={activePrinciple.name}
 													onDelete={deleteProduct}
 													onClick={() => setShowCreateModal({
-														product: { code, name, description, image, price, size, activePrinciple },
+														product: { code, name, description, image, price, size, activePrinciple: activePrinciple.code },
 														open: true
 													})}
 												/>)
