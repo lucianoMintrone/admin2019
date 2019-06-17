@@ -4,7 +4,7 @@ import Header from '../../../Components/Header';
 
 const AdminFAQ = () => (
 	<Fragment>
-		<Header activeSection="admin-faq" />
+		<Header activeSection="faq" />
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-6">
