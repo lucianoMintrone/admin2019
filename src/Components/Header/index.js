@@ -66,6 +66,19 @@ const Header = ({ activeSection }) => {
                                             </li>
                                         )
                                     }
+                                    {
+                                        userIsAdmin()
+                                            ? (
+                                                <li class={`nav-item ${activeSection === 'faq' && 'active'}`}>
+                                                    <Link to="/admin-faq" data-scroll-nav="0">FAQ</Link>
+                                                </li>
+                                            )
+                                            : (
+                                                <li class={`nav-item ${activeSection === 'faq' && 'active'}`}>
+                                                    <Link to="/client-faq" data-scroll-nav="0">FAQ</Link>
+                                                </li>
+                                            )
+                                    }
                                     <li class="nav-item">
                                         <Link to="/" data-scroll-nav="0">
                                             <i class="lni-exit"></i>
