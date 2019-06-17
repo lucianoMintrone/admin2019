@@ -21,7 +21,7 @@ const Product = ({
     
     return (
         <div class="col-md-4">
-            <div class="single-product-items" style={{ cursor: 'pointer' }} onClick={userIsAdmin() && onClick}>
+            <div class="single-product-items" style={{ cursor: 'pointer' }} onClick={userIsAdmin() ? onClick : undefined}>
                 <div class="product-item-image">
                     <a><img src={image} alt="Product" /></a>
                     <div class="product-discount-tag">
