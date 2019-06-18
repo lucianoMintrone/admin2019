@@ -33,7 +33,7 @@ const Contact = () => (
 												<i class="lni-phone-handset"></i>
 											</div>
 											<div class="info-content">
-												<p>+88 1234 56789</p>
+												<p>+54 911 5963 8737</p>
 											</div>
 										</div>
 									</li>
@@ -43,7 +43,7 @@ const Contact = () => (
 												<i class="lni-envelope"></i>
 											</div>
 											<div class="info-content">
-												<p>contact@yourmail.com</p>
+												<p>contact@furnish.com</p>
 											</div>
 										</div>
 									</li>
@@ -53,7 +53,7 @@ const Contact = () => (
 												<i class="lni-home"></i>
 											</div>
 											<div class="info-content">
-												<p>203, Envato Labs, Behind Alis Steet, Australia</p>
+												<p>Av. Cabildo 4565, CABA, Argentina</p>
 											</div>
 										</div>
 									</li>

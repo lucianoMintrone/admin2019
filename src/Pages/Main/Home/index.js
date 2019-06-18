@@ -12,8 +12,7 @@ const Home = () => (
 		<Header activeSection="home" />
 		<section class="hero">
         <div class="hero-inner">
-            <h1>My awesome website</h1>
-            <a href="https://example.com/" class="btn">Go ahead...</a>
+            <h1>Bienvenidos a Furnish!</h1>
         </div>
     </section>
 	</div>
