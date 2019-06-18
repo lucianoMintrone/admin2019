@@ -43,17 +43,18 @@ const Products = () => {
 
 	const search = () => {
 		const products = JSON.parse(localStorage.getItem('products'));
-		if (searchText === '') setProducts(products);
+		const searchingText = searchText.toLowerCase();
+		if (searchingText === '') setProducts(products);
 		else {
 			const findedProducts = products.filter(product => {
-				return product.code === searchText
-					|| product.name.toLowerCase().includes(searchText)
-					|| product.description.toLowerCase().includes(searchText)
-					|| product.price === searchText
-					|| product.size.toLowerCase() === searchText
-					|| product.activePrinciple.code === searchText
-					|| product.activePrinciple.name.toLowerCase().includes(searchText)
-					|| product.activePrinciple.description.toLowerCase().includes(searchText)
+				return product.code === searchingText
+					|| product.name.toLowerCase().includes(searchingText)
+					|| product.description.toLowerCase().includes(searchingText)
+					|| product.price === searchingText
+					|| product.size.toLowerCase().includes(searchingText)
+					|| product.activePrinciple.code === searchingText
+					|| product.activePrinciple.name.toLowerCase().includes(searchingText)
+					|| product.activePrinciple.description.toLowerCase().includes(searchingText)
 			});
 			setProducts(findedProducts);
 		}
